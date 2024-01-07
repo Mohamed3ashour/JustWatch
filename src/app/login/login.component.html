@@ -1,0 +1,30 @@
+
+<div class="container w-75 mt-5 ">
+
+<h2 class="text-center pt-5">Login </h2>
+@if (error.length>=1) {<div class="alert alert-danger">
+   <h6> {{error}} </h6> </div>}
+<form (ngSubmit)="submitLogin(loginGroup)" [formGroup]="loginGroup">
+
+    <label for="email">Email</label>
+    <input type="email" class="form-control bg-transparent text-white mb-2" id="email" formControlName="email">
+    @if (loginGroup.get("email")?.errors && loginGroup.get("email")?.touched){
+    <div class="alert alert-danger my-2">
+        @if (loginGroup.get("email")?.errors?.['required']){<p class="mb-0">email is requered</p>}
+        @if (loginGroup.get("email")?.errors?.['email']){<p class="mb-0">email invalid</p>}
+    </div>
+    }
+
+    <label for="password">Password</label>
+    <input type="text" class="form-control bg-transparent text-white mb-2" id="password" formControlName="password">
+    @if (loginGroup.get("password")?.errors && loginGroup.get("password")?.touched){
+    <div class="alert alert-danger my-2">
+        @if (loginGroup.get("password")?.errors?.['required']){<p class="mb-0">password is requered</p>}
+        @if (loginGroup.get("password")?.errors?.['pattern']){<p class="mb-0">password must start with capital litter & minlength is 6 & maxlength is 8</p>}
+    </div>
+    }
+
+    <button [disabled]="loginGroup.invalid" type="submit" class="btn  fw-semibold mt-3 btn-outline-info  w-25">login</button>
+</form>
+
+</div>

@@ -1,0 +1,103 @@
+               
+            <div class="bg-shadow">
+                <div class="container-fluid container-lg my-5 p-4  "> 
+                    <div class="row ">
+                        <div class="col-sm-4  col-md-3 mb-3 mb-md-0 ">
+                            @if (personDetail.profile_path!=null) {
+                                <a [href]="imgPrefix+personDetail.profile_path" target="_blank">
+                                    <img [src]="imgPrefix+personDetail.profile_path" class="w-100 rounded-2" alt="">
+                                </a>
+                            }
+                        </div>
+                        <div class="col-md-9 col-sm-8 d-flex align-items-center">
+                            <div >
+                            <h2 class="fw-out "> {{personDetail.name| titlecase}} </h2>
+                            <ul class="list-unstyled d-md-flex">
+                                <li class="me-3 ">
+                                    <span class="text-white">Birthday: </span>{{personDetail.birthday|date}}
+                                </li>
+                                @if (personDetail.deathday!= null) {
+                                    <li class="me-3 ">
+                                        <span class="text-white">Date of Death: </span>{{personDetail.deathday|date}}
+                                    </li>
+                                }              
+                                <li class="mx-md-3 ">
+                                    <span class="text-white">Known for: </span>{{personDetail.known_for_department}}
+                                </li>
+                                @if (personDetail.place_of_birth!= null) {
+                                <li class="mx-md-3 ">
+                                    <span class="text-white">Place of Birth: </span>{{personDetail.place_of_birth}}
+                                </li>
+                                }
+                            </ul> 
+        
+                            <div > 
+                                <h3 class="my-0 ">Biography</h3>
+                              
+                                @if (personDetail.biography) {
+                                    @if (personDetail.biography.length<wordLimit) {
+                                        <p class="editp ">{{personDetail.biography}}</p>
+                                    }
+                                    @else if (personDetail.biography.length>wordLimit && !showMore) {
+                                        <p class="editp ">{{personDetail.biography|slice:0:wordLimit}} ... <a class="toHover text-info" (click)="showMore=!showMore">Show More >></a></p>
+                                    }
+                                    @else if (personDetail.biography.length>wordLimit && showMore) {
+                                        <p class="editp " >{{personDetail.biography}}  <a class="toHover text-info" (click)="showMore=!showMore " > Show Less </a></p>
+                                    }
+
+                                }   
+                                @else {
+                                    <p class="editp ">We don't have a biography for Madeleine Yuna Voyles.</p>
+                                }
+                            </div>
+                            <ul class="d-flex list-unstyled mb-2 ">
+                                @if (personDetail.homepage!=null) {
+                                    <li class="me-5" >
+                                            <a href="{{personDetail.homepage}}" target="_blank" class="toHover"><span class="play"></span><i class="fa-solid fa-home me-2"></i> Home Page</a>
+                                    </li>
+                                } 
+                                </ul>
+                                
+                        </div>   
+                    </div>    
+                    </div>
+                
+                </div>
+        
+            </div>
+
+ 
+            <div class="container-fluid container-lg my-5  pt-2 " >
+                <div class="row d-flex justify-content-center">
+            
+                    @for (movie of personWork; track $index) {
+                    @if ( movie.poster_path!=null) {
+
+                    <div class="col-md-2 col-sm-3 col-4 m-2 card text-center cardEdit border-0 rounded-4 overflow-hidden" >
+                              
+                    @if (movie.media_type=='movie' ) {
+                        <a [routerLink]="['/movieDetail',movie.id]">
+                            <img loading="lazy" [src]="imgPrefix+movie.poster_path" class="card-img-top" alt="...">
+                            <div class="card-body position-relative">
+                                <h6 class="card-title  ">{{movie.title}}</h6>
+                                </div>
+                          </a> 
+                      } 
+                      @else {
+                        <a [routerLink]="['/tvDetail',movie.id]">
+                            <img loading="lazy" [src]="imgPrefix+movie.poster_path" class="card-img-top" alt="...">
+                            <div class="card-body position-relative">
+                            <h6 class="card-title  ">{{movie.name}}</h6>
+                            </div>
+                        </a> 
+                      }
+
+                               
+                  </div>
+             }
+          }
+                </div>
+            </div> 
+    
+           
+    

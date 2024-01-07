@@ -1,0 +1,9 @@
+::ng-deep{
+    .ngx-pagination li{
+        border-radius: 50% !important;
+    }
+    .ngx-pagination a:hover {
+        background-color: #2199e8 !important;
+        border-radius: 50% !important;
+    }
+}

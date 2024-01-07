@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+
+body{
+    background-color: rgb(19, 23, 34);
+    color: white !important;
+    font-family: 'assets/webfonts/source-serif-pro/SourceSerifPro-Regular.otf',Arial,sans-serif;
+};
+    
+@media screen and (max-width: 768px) {
+        
+      .recommend .owl-next,.recommend .owl-prev{
+        bottom: 35%!important;
+        width: 2rem!important;
+    }       
+}
+@media screen and (max-width: 575px) {
+    .recommend .owl-next,.recommend .owl-prev{  
+        bottom: 40% !important; 
+        width: 1.5rem!important;
+      }
+      .recommend .owl-next i,.recommend .owl-prev i{
+        font-size: 24px!important;
+      }
+      .social-media a  {
+        font-size: 8px!important;
+      } 
+      .navbar-inverse{
+        padding: 0px !important;
+      }
+      .navbar-toggler{
+        padding: 0px !important;
+      } 
+    
+}
+  
+a{
+    color:white !important;
+    text-decoration: none;
+} 
+
+.bg-lights{
+    background-color:#6d92f6;
+}
+.color-lights{
+    color:#6d92f6;
+}
+.text-gray{
+    color:#b9b9b9;
+}
+.fon{
+    font-family: 'Montserrat Alternates', sans-serif ;
+}
+
+.cardEdit{
+    background-color: #111a2a;
+    color: azure;
+    border: none;
+    padding: 0;
+    box-shadow: 0px 0px 7px  #000000 ;
+    transition-duration: .3s ;
+}
+.positionEdit{
+    top: 0px;
+    left: 10% ;
+    transform: translate(0,-40%);
+}  
+.votePosition{
+    top: 10px;
+    right: 10px ;
+} 
+.cardEdit:hover{
+    box-shadow: 0px 2px 2px #41615f;
+    overflow: hidden;
+}
+
+.cardEdit:hover img{
+    transform: scale(1.05);
+} 
+.cardEdit img{
+    transition-duration: .7s;
+} 
+
+.bg-main{
+    background-color: #000000;
+}
+.bg-mine{
+    margin-top: 60px;
+    width: 100%;
+    background-position: left calc((50vw - 10vw) - 20vw) top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.bg-shadow{
+    height: 100%; 
+    width: 100%; 
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 1) calc((50vw - 10vw) - 20vw), rgba(24, 18, 39, 0.7) 50%, rgba(0, 0, 0, 0.7) 100%);
+}
+.fw-out{
+    font-weight: 700;
+}
+.border-min{
+    border: 1px solid white ;
+    padding: 10px;
+}
+.editp{
+    line-height: 1.4;
+    letter-spacing: -.5px;
+    color: #d4ebea;
+    text-align: justify
+
+}
+.toHover:hover{
+    opacity: .6;
+}
+
+.recommend .owl-next,.recommend .owl-prev{
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    height: 25%;
+    width: 2.5rem;
+    color: rgba(240, 255, 255,.7)!important;
+    position: absolute;
+    border-radius: 50%; 
+    bottom: 30%;
+    transition: .3s all ease;
+}
+
+.recommend .owl-next{
+    transform: translate(20%,-50%); 
+    right:0px;
+}
+.recommend .owl-prev{
+    transform: translate(-20%,-50%); 
+    left: 0px;
+}
+.recommend .owl-next:hover,.recommend .owl-prev:hover{
+    background-color: rgba(0, 0, 0, .6) !important;
+    color: rgb(240, 255, 255)!important;
+}
+
+.recommend .owl-next i,.recommend .owl-prev i{
+    font-size: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a47;
+} 
+::-webkit-scrollbar-track {
+  background: #3e3e5f;
+}

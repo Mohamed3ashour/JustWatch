@@ -1,0 +1,88 @@
+
+<app-header ></app-header>
+<div class="container-fluid container-lg my-5" id="homme">
+<div class="row py-4 d-flex">
+
+    <div class="col-md-4">
+        <div class="brdr  w-25 my-3"></div>
+         <a routerLink="/movies/1">
+            <h2 class="my-3 fon">Trending Movies <br/> To Watch Right Now  </h2>
+         </a>
+        <p class="text-gray fon">Trending Movies To Watch Right Now</p>
+        <div class="brdr w-100 my-3"></div>
+    </div>
+ 
+    @for (movie of trindingMovies; track $index) {
+        <div class="col-md-3 col-lg-2 col-sm-4 col-6 text-center gy-3  px-2">
+            <div class="position-relative card cardEdit h-100 ">
+                <a [routerLink]="['/movieDetail',movie.id]">
+                    <img  [src]="imgPrefix+movie.poster_path" class="card-img-top" alt="movie image">
+                    <div class="card-body"> 
+                        <h3 class=" h6 card-title ">{{movie.title}}</h3>
+                        <p class="card-text text-gray">{{movie.release_date | date}}</p>
+                    </div>
+                    <div class="vote rounded-circle p-2 bg-lights position-absolute votePosition fw-bolder ">{{movie.vote_average| number:'1.1-1'}}</div>
+                </a>
+                </div>
+            </div>
+    }@empty {
+        <div class=" p-2  fw-bolder "><h4>no movies</h4></div>
+    }
+</div>
+
+<div class="row py-4">
+
+    <div class="col-md-4">
+        <div class="brdr  w-25 my-3"></div>
+        <a routerLink="/tv/1">
+            <h2 class="my-3 fon">Trending TV <br/> To Watch Right Now  </h2>
+        </a>
+        <p class="text-gray fon">Trending TV To Watch Right Now</p>
+        <div class="brdr w-100 my-3"></div>
+    </div>
+
+    @for (tv of trindingTv; track $index) {
+
+        <div class=" col-md-3 col-lg-2 col-sm-4 col-6 text-center gy-3 px-2">
+            <div class="  position-relative card cardEdit h-100 " >
+                <a [routerLink]="['/tvDetail',tv.id]">
+                <img  [src]="imgPrefix+tv.poster_path" class="card-img-top" alt="...">
+                <div class="card-body ">
+                    <h6 class="card-title  mt-3">{{tv.name}}</h6>
+                    <p class="card-text text-gray">{{tv.first_air_date| date}}</p>
+                    <div class="vote rounded-circle p-2 bg-lights position-absolute votePosition fw-bolder ">{{tv.vote_average| number:'1.1-1'}}</div>
+                </div>
+                </a>
+            </div>
+        </div>
+    }@empty {
+        <div class=" p-2 fw-bolder "><h4>no TV</h4></div>
+    }
+</div>
+
+<div class="row py-4">
+
+    <div class="col-md-4">
+        <div class="brdr  w-25 my-3"></div>
+        <a routerLink="/gallary/1">
+            <h2 class="my-3 fon">Trending People <br/> To Watch Right Now  </h2>
+        </a>
+        <p class="text-gray fon">Trending People To Watch Right Now</p>
+        <div class="brdr w-100 my-3"></div>
+    </div>
+
+    @for (People of trindingPeople; track $index) {
+    <div class="col-md-3 col-lg-2 col-sm-4 col-6 text-center gy-3  px-2">
+        <div class="  my-2 border-0 rounded-4 border-secondary overflow-hidden card cardEdit h-100">
+            <a [routerLink]="['/personDetail',People.id]">
+                <img  [src]="imgPrefix+People.profile_path" class="w-100" alt="People image">
+                <h3 class="h6 fw-bolder card-title p-2">{{People.name}}</h3>
+            </a>    
+        </div>
+    </div>
+    }@empty {
+        <div class=" p-2 fw-bolder "><h4>no People</h4></div>
+    }
+</div>
+
+</div>

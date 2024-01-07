@@ -1,0 +1,59 @@
+<div class="container w-75 my-5">
+
+<h2 class="text-center pt-5">Register </h2>
+@if (error.length>=1) {<div class="alert alert-danger">
+   <h6> {{error}} </h6> </div>}
+<form (ngSubmit)="submitRegister(registerGroup)" [formGroup]="registerGroup">
+
+    <label for="first_name">First Name</label>
+    <input type="text" class="form-control mb-2 " id="first_name" formControlName="first_name">
+    @if (registerGroup.get("first_name")?.errors && registerGroup.get("first_name")?.touched){
+        <div class="alert alert-danger my-2">
+            @if (registerGroup.get("first_name")?.errors?.['required']){<p class="mb-0">last_name is requered</p>}
+            @if (registerGroup.get("first_name")?.errors?.['minlength']){<p class="mb-0">last_name minLength is 3</p>}
+            @if (registerGroup.get("first_name")?.errors?.['maxlength']){<p class="mb-0">last_name maxLength is 8</p>}
+        </div>
+    }
+
+    <label for="last_name">Last Name</label>
+    <input type="text" class="form-control mb-2 " id="last_name" formControlName="last_name">
+    @if (registerGroup.get("last_name")?.errors && registerGroup.get("last_name")?.touched){
+    <div class="alert alert-danger my-2">
+        @if (registerGroup.get("last_name")?.errors?.['required']){<p class="mb-0">last_name is requered</p>}
+        @if (registerGroup.get("last_name")?.errors?.['minlength']){<p class="mb-0">last_name minLength is 3</p>}
+        @if (registerGroup.get("last_name")?.errors?.['maxlength']){<p class="mb-0">last_name maxLength is 8</p>}
+    </div>
+    }
+
+    <label for="age">Age</label>
+    <input type="number" class="form-control mb-2 " id="age" formControlName="age">
+    @if (registerGroup.get("age")?.errors && registerGroup.get("age")?.touched){
+    <div class="alert alert-danger my-2">
+        @if (registerGroup.get("age")?.errors?.['required']){<p class="mb-0">age is requered</p>}
+        @if (registerGroup.get("age")?.errors?.['min']){<p class="mb-0">age min valu is 12</p>}
+        @if (registerGroup.get("age")?.errors?.['max']){<p class="mb-0">age max valu is 80</p>}
+    </div>
+    }
+
+    <label for="email">Email</label>
+    <input type="email" class="form-control mb-2 " id="email" formControlName="email">
+    @if (registerGroup.get("email")?.errors && registerGroup.get("email")?.touched){
+    <div class="alert alert-danger my-2">
+        @if (registerGroup.get("email")?.errors?.['required']){<p class="mb-0">email is requered</p>}
+        @if (registerGroup.get("email")?.errors?.['email']){<p class="mb-0">email is invalid</p>}
+    </div> 
+    }
+
+    <label for="password">Password</label>
+    <input type="text" class="form-control mb-2 " id="password" formControlName="password">
+    @if (registerGroup.get("password")?.errors && registerGroup.get("password")?.touched){
+    <div class="alert alert-danger my-2">
+        @if (registerGroup.get("password")?.errors?.['required']){<p class="mb-0">password is requered</p>}
+        @if (registerGroup.get("password")?.errors?.['pattern']){<p class="mb-0">password must start with capital litter & minlength is 6 & maxlength is 8</p>}
+    </div>
+    }
+
+    <button [disabled]="registerGroup.invalid" type="submit" class="btn mt-3 btn-outline-info w-25">register</button>
+
+</form>
+</div>

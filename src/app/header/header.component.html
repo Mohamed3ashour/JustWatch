@@ -1,0 +1,33 @@
+<header class="vh-100 d-flex align-items-end ">
+    <div class="container-fluid recommend  bg-head" >
+        <h2 class="fon h3 mb-4">Top Trindind</h2>
+        <owl-carousel-o *ngIf="headeTrinding && headeTrinding.length > 0" [options]="customOptions " class="text-center " id="cursoul"  (dragging)="on_carouselDrag($event.dragging)">
+            @for ( trind of headeTrinding; track $index) {
+            <ng-container >
+              <ng-template  carouselSlide [id]="toString(trind.id) " class="position-relative ">
+                @if (trind.media_type=='tv') {
+                    <a  [routerLink]="isDragging ? null:[ '/tvDetail',trind.id]"  >
+                        <img  [src]="imgPrefix+trind.poster_path" [alt]="trind.alt" class="rounded-2">                      
+                      </a>
+                        <a [routerLink]="['/tvDetail',trind.id]">
+                        <h3 class="h6 card-title  mt-2">{{trind.name}}</h3>
+                      </a> 
+                  }
+                  @else {
+                    <a [routerLink]="isDragging ? null:[ '/movieDetail',trind.id] " >
+                      <img  [src]="imgPrefix+trind.poster_path" [alt]="trind.alt" class="rounded-2">  
+                    </a>  
+                      <a [routerLink]="['/movieDetail',trind.id]">                  
+                      <h3 class="h6  card-title mt-2">{{trind.title}}</h3>
+                    </a> 
+                  }
+                  <div class="vote rounded-circle p-2 bg-lights position-absolute votePosition fw-bolder ">{{trind.vote_average| number:'1.1-1'}}</div>
+
+              </ng-template>
+            </ng-container>
+            }
+         
+          </owl-carousel-o>
+    </div>
+</header>
+

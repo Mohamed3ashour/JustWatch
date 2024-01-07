@@ -1,0 +1,90 @@
+@if (movieDetail.backdrop_path!=null) {
+<div class=" bg-mine" [ngStyle]="{'background-image': 'url(' + bgPrefix+movieDetail.backdrop_path + ')'}">
+   
+    <div class="bg-shadow">
+        <div class="container-fluid container-lg my-5 p-4  "> 
+            <div class="row">
+                <div class="col-sm-4 col-md-3  mb-3 mb-md-0  ">
+                    <picture >
+                    @if (movieDetail.poster_path!=null) {
+                        <a [href]="imgPrefix+movieDetail.poster_path" target="_blank">
+                         <img [src]="imgPrefix+movieDetail.poster_path" class="w-100 rounded-2" alt="">
+                        </a>
+                    }
+                 </picture>
+                </div> 
+                <div class="col-sm-8 col-md-9 ">
+                    <h2 class="fw-out "> 
+                        {{movieDetail.title| titlecase}}
+                        <span class="h3 text-gray">({{movieDetail.release_date|date:'y'}})</span>
+                    </h2>
+                    <ul class="list-unstyled d-sm-flex">
+                        <li class="me-3 ">
+                            <span class="text-white">Release: </span>{{movieDetail.release_date|date}}
+                        </li>
+                        <span>Geners: </span>
+                        <li class="mx-1 d-inline-flex">
+                        @for (g of movieDetail.genres; track $index) {
+                            {{g.name + ($index < movieDetail.genres.length - 1 ? ', ' : '')}} 
+                        }
+                        </li>
+                        <li class="mx-sm-3 ">
+                            <span class="text-white">Duration: </span>{{movieDetail.runtime}} minutes
+                        </li>
+                    </ul>
+
+                    <ul class="d-flex list-unstyled mb-2 ">
+                        <li >
+                            <div  class="bg-main rounded-circle fw-bolder border-min">{{movieDetail.vote_average| number:'1.1-1' }} </div>
+                        </li>
+                        <li class="mx-2 ">
+                            <p class="fs-3 mb-0">Score</p>
+                        </li>
+                    </ul>
+                    <div > 
+                        <h3 class="my-0 ">Overview</h3>
+                        <p class="editp ">{{movieDetail.overview}}</p>
+                    </div>
+                    <ul class="d-flex list-unstyled mb-2 ">
+                        @if (movieDetail.homepage!="") {
+                            <li class="me-5" >
+                                    <a href="{{movieDetail.homepage}}" target="_blank" class="toHover"><span class="play"></span><i class="fa-solid fa-home me-2"></i> Home Page</a>
+                            </li>
+                        } 
+                            <li>
+                                @if (movieVideo[0]!=null) {
+                                    <a href="https://www.youtube.com/embed/{{movieVideo[movieVideo.length-1].key}}?si=74BnTgjL4Eb5GXYg" target="_blank" class="toHover"><span class="play"></span><i class="fa-solid fa-play me-2"></i> Play Trailer</a>
+                                    }                          
+                             </li>
+                        </ul>
+                        
+                </div>       
+            </div>
+        </div>
+    </div>   
+</div>
+}
+
+@if (movieRecommendations.length>0) {
+<div class="container-fluid container-lg recommend " >
+    <h2 class="h3 mb-3">Recommendations</h2>
+    <owl-carousel-o   [options]="customOptions " class="text-center " id="cursoul"  (dragging)="on_carouselDrag($event.dragging)">
+        @for ( trind of movieRecommendations; track $index) {
+            @if (trind.poster_path!=null) {
+                <ng-container >
+                <ng-template  carouselSlide [id]="toString(trind.id) " class="position-relative vh-25 ">
+                    <a  [routerLink]="isDragging ? null:[ '/movieDetail',trind.id]"  >
+                        <img loading="lazy" [src]="imgPrefix+trind.poster_path"  [alt]="trind.alt+ ' w-100'" class="rounded-2  "> 
+                        <div class="caption p-2 "> 
+                            <h3 class="h6 card-title mt-1 ">{{trind.title}}</h3> 
+                        </div>  
+                    </a>  
+                    <div class="vote rounded-circle p-2 bg-lights position-absolute votePosition fw-bolder imageHover">{{trind.vote_average| number:'1.1-1'}}</div>
+                </ng-template>
+            </ng-container>
+            }
+        }     
+      </owl-carousel-o>
+   
+</div>
+}

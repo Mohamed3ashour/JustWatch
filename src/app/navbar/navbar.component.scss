@@ -1,0 +1,23 @@
+
+.navbar{
+    padding: 0;
+    transition-duration: 1s;
+}
+.navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+.navbar-toggler {
+    border: none !important;
+}
+
+.navbar-inverse{
+    background-color: rgba(20, 51, 175, 0.5);
+    backdrop-filter: blur(6px);
+    padding: 3px 10px;
+} 
+.logo-img{
+    height: 45px;
+}
+.navbar-nav .nav-link:hover {
+    opacity: .6;    
+}

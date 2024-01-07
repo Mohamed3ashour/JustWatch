@@ -1,0 +1,98 @@
+@if (movieDetail.backdrop_path!=null) {
+     <div class=" bg-mine" [ngStyle]="{'background-image': 'url(' + bgPrefix+movieDetail.backdrop_path + ')'}">
+   
+        <div class="bg-shadow">
+            <div class="container-fluid container-lg my-5 p-4  "> 
+                <div class="row">
+                    <div class=" col-sm-4 col-md-3  mb-3 mb-md-0 d-flex align-items-center">
+                        @if (movieDetail.poster_path!=null) {
+                        <a [href]="imgPrefix+movieDetail.poster_path" target="_blank">   
+                         <img  [src]="imgPrefix+movieDetail.poster_path" class="w-100 rounded-2" alt="">
+                        </a>
+                    }
+                    </div>
+                    <div class="col-sm-8 col-md-9 ">
+                        <h2 class="fw-out "> 
+                            {{movieDetail.name| titlecase}}
+                            <span class="h3 text-gray">({{movieDetail.first_air_date|date:'y'}})</span>
+                        </h2>
+                        <ul class="list-unstyled d-sm-flex">
+                            <li class="me-3 ">
+                                <span class="text-white">Release: </span>{{movieDetail.first_air_date|date}}
+                            </li>
+                            <span>Geners: </span>
+                            <li class="mx-1 d-inline-flex">
+                                @for (g of movieDetail.genres; track $index) {
+                                    {{g.name + ($index < movieDetail.genres.length - 1 ? ', ' : '')}} 
+                                }
+                                </li>
+                            <li class="mx-sm-3 ">
+                               {{movieDetail.number_of_seasons}}  <span class="text-white"> season </span>
+                            </li>
+                            @if (movieDetail.episode_run_time!="") {
+                                <li class="mx-sm-3 ">
+                                    <span class="text-white">Duration: </span>{{movieDetail.episode_run_time}} minutes
+                                </li>
+                            }
+                        </ul>
+    
+                        <ul class="d-flex list-unstyled mb-2 ">
+                            <li >
+                                <div  class="bg-main rounded-circle fw-bolder border-min">{{movieDetail.vote_average| number:'1.1-1' }} </div>
+                            </li>
+                            <li class="mx-2 ">
+                                <p class="fs-3 mb-0">Score</p>
+                            </li>
+                        </ul>
+                        <div > 
+                            <h3 class="my-0 ">Overview</h3>
+                            <p class="editp ">{{movieDetail.overview}}</p>
+                        </div>
+                        <ul class="d-flex list-unstyled mb-2 ">
+                            @if (movieDetail.homepage!="") {
+                                <li class="me-5">
+                                        <a href="{{movieDetail.homepage}}" target="_blank" class="toHover"><span class="play"></span><i class="fa-solid fa-home me-2"></i> Home Page</a>
+                                </li> 
+                            } 
+                            @if (movieVideo[0]!=null) {
+                                <li >
+                                    <a href="https://www.youtube.com/embed/{{movieVideo[0].key}}?si=74BnTgjL4Eb5GXYg" target="_blank" class="toHover"><span class="play"></span><i class="fa-solid fa-play me-2"></i> Play Trailer</a>
+                                </li>
+                            }                          
+                        </ul>
+                        
+                       
+                     </div>       
+                 </div>
+            
+             </div>
+    
+        </div>
+       
+        
+    </div>
+    <div>
+    </div>
+}
+
+    <div class="container-fluid container-lg recommend " >
+        <h2 class="h3 mb-3">Recommendations</h2>
+        <owl-carousel-o  *ngIf="movieRecommendations && movieRecommendations.length > 0" [options]="customOptions " class="text-center " id="cursoul"  (dragging)="on_carouselDrag($event.dragging)">
+            @for ( trind of movieRecommendations; track $index) {
+                @if (trind.poster_path!=null) {
+                    <ng-container >
+                    <ng-template  carouselSlide [id]="toString(trind.id) " class="position-relative  ">
+                        <a  [routerLink]="isDragging ? null:[ '/tvDetail',trind.id]"  >
+                        <img loading="lazy" [src]="imgPrefix+trind.poster_path" [alt]="trind.alt+ 'tv image'" class="rounded-2 imageHover"> 
+                        <div class="caption p-2 "> 
+                                <h3 class="h6 mt-1 ">{{trind.name}}</h3> 
+                            </div>  
+                        </a> 
+                        <div class="vote rounded-circle p-2 bg-lights position-absolute votePosition fw-bolder ">{{trind.vote_average| number:'1.1-1'}}</div>
+                    </ng-template>
+                </ng-container>
+                }
+            }     
+          </owl-carousel-o>
+    </div>
+    
