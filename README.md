@@ -3,4 +3,4 @@ Just-Watch is a Movie Website which designed to provide users with information, 
  the website is responsive where designed and developed in a way that allows it to adapt and display properly on various screen sizes and devices.
 
 ## Technology Used:
-HTML ,SASS ,Bootstrap ,Angular and use The Movie Database API
+HTML ,SCSS ,Bootstrap ,TypeScript ,Angular framework and use The Movie Database API
