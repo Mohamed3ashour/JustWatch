@@ -1,15 +1,16 @@
 import { Routes } from '@angular/router';
-import { GallaryComponent } from './gallary/gallary.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { MoviesComponent } from './movies/movies.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { RegisterComponent } from './register/register.component';
-import { TvComponent } from './tv/tv.component';
-import { authGuardGuard } from './auth-guard.guard';
-import { TvDetailsComponent } from './tv-details/tv-details.component';
-import { PersonDetailsComponent } from './person-details/person-details.component';
+import { authGuardGuard } from './Guard/auth-guard.guard';
+import { GallaryComponent } from './Components/gallary/gallary.component';
+import { HomeComponent } from './Components/home/home.component';
+import { LoginComponent } from './Components/login/login.component';
+import { MovieDetailsComponent } from './Components/movie-details/movie-details.component';
+import { MoviesComponent } from './Components/movies/movies.component';
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { PersonDetailsComponent } from './Components/person-details/person-details.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { TvDetailsComponent } from './Components/tv-details/tv-details.component';
+import { TvComponent } from './Components/tv/tv.component';
+
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'home' },    

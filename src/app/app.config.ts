@@ -6,5 +6,8 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes , withHashLocation()), provideClientHydration(),importProvidersFrom(HttpClientModule,BrowserAnimationsModule),provideHttpClient(withFetch())]
+  providers: [provideRouter(routes , withHashLocation()),
+     provideClientHydration(),
+     importProvidersFrom(HttpClientModule,BrowserAnimationsModule),
+     provideHttpClient(withFetch())]
 };

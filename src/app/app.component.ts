@@ -1,8 +1,8 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {  RouterOutlet } from '@angular/router';
-import { NavbarComponent } from "./navbar/navbar.component";
 import $ from 'jquery';
+import { NavbarComponent } from './Components/navbar/navbar.component';
 
 @Component({
     selector: 'app-root',
